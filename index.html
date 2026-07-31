@@ -1,19 +1,537 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bangalore IT Hub Review</title>
-<style>
-body{font-family:Arial;background:#f4f4f4;display:flex;justify-content:center;padding:20px}
-.card{max-width:420px;background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 10px #ccc;text-align:center}
-.logo{width:120px}
-a.btn{display:block;margin:10px 0;padding:12px;background:#28a745;color:#fff;text-decoration:none;border-radius:8px}
-.review{background:#eee;padding:8px;margin:8px;border-radius:6px;cursor:pointer}
-</style></head>
-<body><div class="card">
-<img src="logo.jpg" class="logo">
-<h2>Bangalore IT Hub</h2>
-<p>⭐⭐⭐⭐⭐</p>
-<a class="btn" href="https://g.page/r/CRIlXdVhFYvhEBM/review">Give Google Review</a>
-<a class="btn" href="https://wa.me/918618084202">WhatsApp Us</a>
-<div class="review" onclick="navigator.clipboard.writeText(this.innerText)">Excellent CCTV products and fast installation service.</div>
-<div class="review" onclick="navigator.clipboard.writeText(this.innerText)">Best CCTV shop in Bangalore.</div>
-</div></body></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangalore IT Hub - Feedback & Review</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Tech & IT Hub Color Palette: Deep Tech Navy, Cyber Cyan, Electric Blue */
+            --primary: #00E5FF;
+            --primary-hover: #00B8D4;
+            --accent-blue: #2563EB;
+            --secondary: #0F172A;
+            --bg-gradient: linear-gradient(135deg, #0A0F1D 0%, #070A12 50%, #0F172A 100%);
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --card-border: rgba(0, 229, 255, 0.18);
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+            --accent-green: #10B981;
+            --accent-orange: #F97316;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Tech Grid / Circuit Background Effect */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 20%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header / Logo Styling */
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .logo-container {
+            background: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 16px;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+            margin-bottom: 12px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        .logo-container img {
+            max-height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #00E5FF 0%, #3B82F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Screen Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 28px 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Choice Screen */
+        .choice-title {
+            text-align: center;
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 22px;
+            line-height: 1.4;
+            color: #FFFFFF;
+        }
+
+        .btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn-choice {
+            border: none;
+            outline: none;
+            padding: 18px 20px;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .btn-happy {
+            background: linear-gradient(135deg, #0284C7 0%, #2563EB 100%);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-happy:active {
+            transform: scale(0.98);
+        }
+
+        .btn-help {
+            background: linear-gradient(135deg, #0F766E 0%, #0D9488 100%);
+            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.3);
+            border: 1px solid rgba(45, 212, 191, 0.4);
+        }
+
+        .btn-help:active {
+            transform: scale(0.98);
+        }
+
+        .btn-icon {
+            font-size: 22px;
+            margin-right: 12px;
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Reviews Screen */
+        .hidden {
+            display: none !important;
+        }
+
+        .screen-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #FFF;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 229, 255, 0.2);
+            border-color: var(--primary);
+        }
+
+        .review-instruction {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(0, 229, 255, 0.04);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px dashed rgba(0, 229, 255, 0.25);
+            line-height: 1.5;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 420px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        /* Scrollbar styling */
+        .reviews-list::-webkit-scrollbar {
+            width: 5px;
+        }
+        .reviews-list::-webkit-scrollbar-thumb {
+            background: rgba(0, 229, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .review-card:hover, .review-card:active {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 229, 255, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .stars {
+            color: #FFC107;
+            font-size: 13px;
+        }
+
+        .tap-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: #00E5FF;
+            background: rgba(0, 229, 255, 0.12);
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        .review-text {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: #E2E8F0;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #0284C7;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 999;
+            text-align: center;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Keyframes */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Brand Header -->
+        <div class="header">
+            <div class="logo-container">
+                <img src="logo.png" alt="Bangalore IT Hub Logo">
+            </div>
+            <h1 class="brand-title">Bangalore IT Hub</h1>
+            <p class="brand-subtitle">CCTV Security & Wholesale IT Hardware</p>
+        </div>
+
+        <!-- SCREEN 1: Feedback Selection Screen -->
+        <div id="choiceScreen" class="card">
+            <h2 class="choice-title">How was your experience with us?</h2>
+            
+            <div class="btn-stack">
+                <button class="btn-choice btn-happy" onclick="showReviewScreen()">
+                    <div class="btn-content">
+                        <span class="btn-icon">😊</span>
+                        <div>
+                            <div>I'm Happy!</div>
+                            <div style="font-size: 11px; opacity: 0.8; font-weight: normal;">Give 5-Star Google Review</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <a href="https://wa.me/918618084202?text=Hello%20Bangalore%20IT%20Hub,%20I%20need%20help%20with%20your%20service/product." target="_blank" class="btn-choice btn-help">
+                    <div class="btn-content">
+                        <span class="btn-icon">💬</span>
+                        <div>
+                            <div>Need Help?</div>
+                            <div style="font-size: 11px; opacity: 0.8; font-weight: normal;">Talk directly on WhatsApp</div>
+                        </div>
+                    </div>
+                    <i class="fa-brands fa-whatsapp" style="font-size: 22px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: Wholesale Review Suggestions Screen -->
+        <div id="reviewScreen" class="card hidden">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showChoiceScreen()">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <h3 style="font-size: 16px; font-weight: 700; color: #FFFFFF;">Select Review Text</h3>
+                <div style="width: 36px;"></div>
+            </div>
+
+            <div class="review-instruction">
+                <i class="fa-regular fa-hand-pointer"></i> Tap any review to auto-copy and open Google Review in 1 second!
+            </div>
+
+            <div class="reviews-list">
+                <!-- 10 Wholesale / CCTV / IT Accessories Review Suggestions -->
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Best wholesale price for CCTV cameras & IT hardware in Bengaluru! Technical knowledge of Aakash sir is excellent. Highly recommended for bulk orders.</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Bangalore IT Hub provides genuine IT products at unbeatable wholesale rates. Purchased refurbished MacBooks and SSDs, top quality guaranteed!</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Best CCTV security installation and wholesale camera supplier. Fast service, original products, and great support team!</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Superb experience at Bangalore IT Hub! Got the best price on Hikvision / CP Plus cameras and networking accessories in SP Road market rate.</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Very transparent pricing and genuine products. Bought bulk SSDs and RAMs for my office, working perfectly. 10/10 service!</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Reliable IT vendor in Bangalore! Prompt installation for CCTV security systems and best deal on second-hand laptops.</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Awesome customer support! Aakash sir helped us select the right CCTV camera setup for our shop. Wholesale rates were very genuine.</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Great stock of computer accessories, CCTV cameras, and SSDs. Best wholesale market place for all IT security needs in Namma Bengaluru!</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Quick CCTV installation and post-sales support. Bangalore IT Hub is definitely our go-to wholesale shop for IT items.</p>
+                </div>
+
+                <div class="review-card" onclick="copyAndRedirect(this)">
+                    <div class="review-header">
+                        <div class="stars">★★★★★</div>
+                        <span class="tap-tag"><i class="fa-regular fa-copy"></i> Tap to Copy</span>
+                    </div>
+                    <p class="review-text">Five stars for quality, wholesale pricing, and polite behavior. Highly recommended for commercial CCTV security setups!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© Bangalore IT Hub | Safety & IT Solutions</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check" style="font-size: 18px;"></i>
+        <span>Text Copied! Opening Google Review...</span>
+    </div>
+
+    <script>
+        const GOOGLE_REVIEW_URL = "https://g.page/r/CRIlXdVhFYvhEBM/review";
+
+        function showReviewScreen() {
+            document.getElementById('choiceScreen').classList.add('hidden');
+            document.getElementById('reviewScreen').classList.remove('hidden');
+        }
+
+        function showChoiceScreen() {
+            document.getElementById('reviewScreen').classList.hidden = false;
+            document.getElementById('reviewScreen').classList.add('hidden');
+            document.getElementById('choiceScreen').classList.remove('hidden');
+        }
+
+        function copyAndRedirect(element) {
+            const reviewText = element.querySelector('.review-text').innerText;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(reviewText).then(() => {
+                showToast();
+                setTimeout(() => {
+                    window.location.href = GOOGLE_REVIEW_URL;
+                }, 1000);
+            }).catch(err => {
+                // Fallback for clipboard
+                const textarea = document.createElement('textarea');
+                textarea.value = reviewText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                showToast();
+                setTimeout(() => {
+                    window.location.href = GOOGLE_REVIEW_URL;
+                }, 1000);
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
