@@ -1,19 +1,154 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bangalore IT Hub Review</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangalore IT Hub Reviews</title>
+
 <style>
-body{font-family:Arial;background:#f4f4f4;display:flex;justify-content:center;padding:20px}
-.card{max-width:420px;background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 10px #ccc;text-align:center}
-.logo{width:120px}
-a.btn{display:block;margin:10px 0;padding:12px;background:#28a745;color:#fff;text-decoration:none;border-radius:8px}
-.review{background:#eee;padding:8px;margin:8px;border-radius:6px;cursor:pointer}
-</style></head>
-<body><div class="card">
+body{
+margin:0;
+padding:20px;
+font-family:Arial,sans-serif;
+background:#f2f2f2;
+}
+
+.card{
+max-width:420px;
+margin:auto;
+background:#fff;
+padding:25px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+text-align:center;
+}
+
+.logo{
+width:140px;
+margin-bottom:10px;
+}
+
+h2{
+margin:10px 0;
+font-size:40px;
+}
+
+.stars{
+font-size:36px;
+color:#FFC107;
+margin:10px 0;
+}
+
+.btn{
+display:block;
+text-decoration:none;
+padding:16px;
+margin:15px 0;
+border-radius:10px;
+font-size:22px;
+font-weight:bold;
+color:#fff;
+}
+
+.google{
+background:#4CAF50;
+}
+
+.whatsapp{
+background:#25D366;
+}
+
+h3{
+margin-top:25px;
+}
+
+.review{
+background:#f8f8f8;
+padding:15px;
+border-radius:10px;
+margin-bottom:12px;
+cursor:pointer;
+border:1px solid #ddd;
+font-size:17px;
+}
+
+.review:hover{
+background:#e8f5e9;
+}
+
+.copy{
+margin-top:15px;
+color:green;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
 <img src="logo.jpg" class="logo">
+
 <h2>Bangalore IT Hub</h2>
-<p>⭐⭐⭐⭐⭐</p>
-<a class="btn" href="https://g.page/r/CRIlXdVhFYvhEBM/review">Give Google Review</a>
-<a class="btn" href="https://wa.me/918618084202">WhatsApp Us</a>
-<div class="review" onclick="navigator.clipboard.writeText(this.innerText)">Excellent CCTV products and fast installation service.</div>
-<div class="review" onclick="navigator.clipboard.writeText(this.innerText)">Best CCTV shop in Bangalore.</div>
-</div></body></html>
+
+<div class="stars">★★★★★</div>
+
+<p>
+Thank you for choosing us.<br>
+Please share your valuable feedback.
+</p>
+
+<a class="btn google"
+href="https://g.page/r/CRIlXdVhFYvhEBM/review"
+target="_blank">
+⭐ Give Google Review
+</a>
+
+<a class="btn whatsapp"
+href="https://wa.me/918618084202"
+target="_blank">
+💬 Chat on WhatsApp
+</a>
+
+<h3>Review Suggestions</h3>
+
+<div class="review" onclick="copyReview(this)">
+Excellent CCTV products and quick installation service. Highly recommended!
+</div>
+
+<div class="review" onclick="copyReview(this)">
+Best CCTV shop in Bangalore with genuine products and reasonable prices.
+</div>
+
+<div class="review" onclick="copyReview(this)">
+Professional installation, excellent customer support, and the best wholesale prices for genuine CCTV products.
+</div>
+
+<div class="review" onclick="copyReview(this)">
+Best wholesale CCTV shop in Bangalore with genuine products, competitive prices, and fast service. Highly recommended!
+</div>
+
+<div class="review" onclick="copyReview(this)">
+Excellent wholesale CCTV dealer with original products, affordable prices, quick delivery, and reliable installation service.
+</div>
+
+<p class="copy" id="copyMsg"></p>
+
+</div>
+
+<script>
+function copyReview(el){
+navigator.clipboard.writeText(el.innerText);
+
+document.getElementById("copyMsg").innerHTML =
+"✅ Review copied! Now click 'Give Google Review' and paste it.";
+
+setTimeout(function(){
+document.getElementById("copyMsg").innerHTML="";
+},3000);
+}
+</script>
+
+</body>
+</html>
